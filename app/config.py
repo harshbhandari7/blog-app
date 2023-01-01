@@ -14,6 +14,3 @@ class Config:
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
     
-
-    # token 992d909e6980e806313a435e7d0014cb
-    # sid ACb4053447adff5c4d2689390dfa462e6d
