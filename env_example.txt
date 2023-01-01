@@ -1,0 +1,9 @@
+SECRET_KEY = 'b126f2b8fdd2034a73b6e818b9672e09'
+SQLALCHEMY_DATABASE_URI = 'engine://user:password@host/dbname'
+MAIL_SERVER = 'smtp.sendgrid.net'
+MAIL_PORT = 587
+MAIL_USE_TLS = True
+MAIL_USERNAME = 'apikey'
+MAIL_PASSWORD = 'SG.0ZHBorujQ3i0YuAxJbNZkA.sdddddwAraeZfRoMixh52xKpc5h-Ce7nVhyXPtP2GsEjtg'
+MAIL_DEFAULT_SENDER = 'user@domain.com'
+SQLALCHEMY_TRACK_MODIFICATIONS = False
