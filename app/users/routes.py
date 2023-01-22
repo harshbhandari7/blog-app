@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, redirect, request, Blueprint
+from flask import render_template, url_for, flash, redirect, request, Blueprint, current_app
 from flask_login import login_user, logout_user, current_user, login_required
 
 from app import db, bcrypt
@@ -83,7 +83,7 @@ def user_posts(username):
     user = User.query.filter_by(username=username).first_or_404()
     
     # getting all the posts by that user
-    user_posts = Post.query.filter_by(author=user).order_by(Post.date_posted.desc()).paginate(page=page_no, per_page=5)
+    user_posts = Post.query.filter_by(author=user).order_by(Post.date_posted.desc()).paginate(page=page_no, per_page=current_app.config['POSTS_PER_PAGE'])
     
     return render_template('user_posts.html', posts=user_posts, user=user)
 
