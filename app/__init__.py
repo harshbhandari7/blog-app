@@ -5,6 +5,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_migrate import Migrate
+from elasticsearch import Elasticsearch
 
 from app.config import Config 
 
@@ -27,7 +28,11 @@ def create_app(config_class=Config):
     bcrypt.init_app(app)
     login_manager.init_app(app)
     mail.init_app(app)
-    migrate.init_app(app, db) # migration instance 
+    migrate.init_app(app, db) # migration instance
+
+    # elasticsearch instance
+    app.elasticsearch = Elasticsearch(hosts=[app.config['ELASTICSEARCH_URL']], verify_certs=False, basic_auth=('elastic', app.config['ELASTICSEARCH_PASSWORD'])) \
+        if app.config['ELASTICSEARCH_URL'] else None
 
     from app.users.routes import users
     from app.posts.routes import posts
